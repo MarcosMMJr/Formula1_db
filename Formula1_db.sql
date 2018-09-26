@@ -135,3 +135,11 @@ SELECT * FROM circuitos;
 SELECT * FROM corridas;
 SELECT * FROM posicoes;
 SELECT * FROM pilotos_corridas;
+
+SELECT pilotos.nome, equipes.nome, pilotos_corridas.id_posicao, posicoes.pontos, pilotos_corridas.tempo, corridas.descricao, circuitos.nome, circuitos.id_pais 
+FROM ((((pilotos_corridas INNER JOIN corridas ON pilotos_corridas.id_corrida=corridas.id)
+ INNER JOIN pilotos ON pilotos_corridas.id_piloto=pilotos.id)
+ INNER JOIN equipes ON pilotos.id_equipe=equipes.id)
+ INNER JOIN posicoes ON pilotos_corridas.id_posicao=posicoes.id)
+ INNER JOIN circuitos ON corridas.id_circuito=circuitos.id
+ ORDER BY pilotos_corridas.id_corrida, pilotos_corridas.id_posicao;
