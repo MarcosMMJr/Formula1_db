@@ -136,7 +136,7 @@ SELECT * FROM corridas;
 SELECT * FROM posicoes;
 SELECT * FROM pilotos_corridas;
 
-SELECT pilotos.nome, equipes.nome, pilotos_corridas.id_posicao, posicoes.pontos, pilotos_corridas.tempo, corridas.descricao, circuitos.nome, circuitos.id_pais 
+SELECT pilotos.nome as Piloto, equipes.nome as Equipe, pilotos_corridas.id_posicao as Posição, posicoes.pontos as Pontuação, pilotos_corridas.tempo as Tempo_de_conclusão, corridas.descricao as GP, circuitos.nome as Circuito, circuitos.id_pais as País
 FROM ((((pilotos_corridas INNER JOIN corridas ON pilotos_corridas.id_corrida=corridas.id)
  INNER JOIN pilotos ON pilotos_corridas.id_piloto=pilotos.id)
  INNER JOIN equipes ON pilotos.id_equipe=equipes.id)
